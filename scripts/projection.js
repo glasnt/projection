@@ -72,15 +72,21 @@
 		return basename;
 	}
 
-	function fragmentToTitle(fragment) {
+	function formatPageNumber() {
 		var page;
 		page = currentPosition + 1;
 
 		if (page < 10) {
-			return "0" + page + " - " + fragment;
+			return "0" + page;
 		} else {
-			return page + " - " + fragment;
+			return page;
 		}
+	}
+
+	function fragmentToTitle(fragment) {
+		page = formatPageNumber();
+
+		return page + " - " + fragment;
 	}
 
 	function pathFromURL(url) {
@@ -101,7 +107,11 @@
 
 		slide = slideList[currentPosition];
 	
-    		$("div.slide").load(slide);
+    		$("div.slide").load(slide, function() {
+			$("div.slide section").append(
+				"<div id='pagenumber'>" + formatPageNumber() + "</div>"
+			);
+		});
 
 		fragment = fileToURL(slide);
 		document.title = fragmentToTitle(fragment);
@@ -109,6 +119,7 @@
 		url = pathFromURL(document.URL);
 
   		history.replaceState(null, null, url + "#" + fragment);
+
 	}
 
 /*
@@ -201,4 +212,10 @@
 
 	doSetupWindow();
 	doScaleBody();
+
+/*
+ * Finaly, the initial slide render is done in the callback when the list of
+ * slide files is loaded.
+ */
+
 }());

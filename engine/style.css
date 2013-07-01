@@ -10,11 +10,17 @@ body {
 	counter-reset:paging;
 }
 
-/* Slide */
-.slide:after {
-	counter-increment:paging;
-	content:counter(paging, decimal-leading-zero);
+/*
+ * Page number
+ */
+.slide #pagenumber {
+	position: absolute;
+	bottom: 13px;
+	right: 15px;
+	font-size: small;
+	color: #777777;
 }
+
 
 /*
  * <section> elements are sized to a width of 1024x768. So any work you do 
@@ -33,7 +39,7 @@ body {
 	color: #000000;
 }
 
-.slide.nopage:after {
+.slide .nopage #pagenumber {
     display: none;
 }
 
