@@ -106,6 +106,7 @@
 		var slide, fragment;
 
 		slide = slideList[currentPosition];
+//		slide = slide + "?_=" + new Date().getTime();
 	
     		$("div.slide").load(slide, function() {
 			$("div.slide section").append(
