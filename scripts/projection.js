@@ -4,6 +4,16 @@
 	var lastSlide;
 	var currentPosition = 0;
 	var cacheStamp;
+	var initialSlide;
+
+/*
+ * There are some nasty cases where browsers decide (based on absence of
+ * Expires: headers) that they can cache something permenantly. So we employ
+ * the jQuery trick of appending a no-op query string parameter to HTML
+ * requests, with the variation that we only set it once per [re]load of the
+ * master presentation page, not once per request. So business as usual, unless
+ * there's a problem, in which case a forced reload will fix it.
+ */
 
 	cacheStamp = new Date().getTime();
 
@@ -14,19 +24,41 @@
  * we're at it.
  */
 
-
 	$.get("list.txt", "", function(data) {
 		files = data.split("\n");
 		for (var i = 0; i < files.length; i++) {
 			file = files[i];
 			if (file && (file.charAt[0] != '#')) {
 				slideList.push(file);
+
+				if (file.indexOf(initialSlide) > -1) {
+					currentPosition = i;
+				}
 			}
 		}
 		lastSlide = slideList.length - 1;
 		displayCurrentSlide();
 	}, "text");
 
+/*
+ * Was a specific slide specified at load?
+ */
+
+	function doInitialSlide() {
+		var pos;
+		var url;
+		var hash;
+
+		url = document.URL;
+
+		pos = url.lastIndexOf('#')
+		if (pos == -1) {
+			return;
+		}
+
+		hash = url.substring(pos + 1);
+		initialSlide = hash;
+	}
 
 /*
  * Slide movement functions.
@@ -124,7 +156,6 @@
 		url = pathFromURL(document.URL);
 
   		history.replaceState(null, null, url + "#" + fragment);
-
 	}
 
 /*
@@ -215,6 +246,7 @@
 		body.style.OTransform = transform;
 	}
 
+	doInitialSlide();
 	doSetupWindow();
 	doScaleBody();
 
