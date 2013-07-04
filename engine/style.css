@@ -13,7 +13,7 @@ body {
 /*
  * Page number
  */
-.slide #pagenumber {
+.slide footer#pagenumber {
 	position: absolute;
 	bottom: 13px;
 	right: 15px;
@@ -39,7 +39,7 @@ body {
 	color: #000000;
 }
 
-.slide .nopage #pagenumber {
+.slide .nopage footer#pagenumber {
     display: none;
 }
 

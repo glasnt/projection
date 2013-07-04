@@ -3,6 +3,9 @@
 	var slideList = new Array();
 	var lastSlide;
 	var currentPosition = 0;
+	var cacheStamp;
+
+	cacheStamp = new Date().getTime();
 
 /*
  * Retrieve the list of slide files. The last line is likely empty, hence
@@ -10,6 +13,7 @@
  * to skip blank lines which we'd need anyway. Skip commented out lines while
  * we're at it.
  */
+
 
 	$.get("list.txt", "", function(data) {
 		files = data.split("\n");
@@ -106,11 +110,11 @@
 		var slide, fragment;
 
 		slide = slideList[currentPosition];
-//		slide = slide + "?_=" + new Date().getTime();
+		slide = slide + "?_=" + cacheStamp;
 	
     		$("div.slide").load(slide, function() {
 			$("div.slide section").append(
-				"<div id='pagenumber'>" + formatPageNumber() + "</div>"
+				"<footer id='pagenumber'>" + formatPageNumber() + "</footer>"
 			);
 		});
 
