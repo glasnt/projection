@@ -13,12 +13,16 @@ body {
 /*
  * Page number
  */
-.slide footer#pagenumber {
+.slide footer {
 	position: absolute;
-	bottom: 13px;
-	right: 15px;
+	bottom: 15px;
+	left: 80px;
 	font-size: 18px;
 	color: #777777;
+}
+.slide footer#pagenumber {
+	left: inherit;
+	right: 17px;
 }
 
 
