@@ -1,5 +1,6 @@
 (function () {
 	var body = document.body;
+	var mode;
 	var slideList = new Array();
 	var lastSlide;
 	var currentPosition = 0;
@@ -37,7 +38,12 @@
 			}
 		}
 		lastSlide = slideList.length - 1;
-		displayCurrentSlide();
+
+		if (mode == "list") {
+			displayOverview();
+		} else {
+			displayCurrentSlide();
+		}
 	}, "text");
 
 /*
@@ -53,6 +59,7 @@
 
 		pos = url.lastIndexOf('#')
 		if (pos == -1) {
+			mode = "list";
 			return;
 		}
 
@@ -157,6 +164,22 @@
 
   		history.replaceState(null, null, url + "#" + fragment);
 	}
+
+	function displayOverview() {
+		var slide, div;
+		for (var i = 0; i < slideList.length; i++) {
+    			$("div.slide").before(function() {
+				slide = slideList[i];
+				slide = slide + "?_=" + cacheStamp;
+				
+				div = $("<div id='" + i + "' style='display: none;'></div>");
+				div.load(slide);
+
+				return div;
+			});
+		}
+	}
+
 
 /*
  * Event handlers. Note that there is /not/ a handler for 'click' in order
