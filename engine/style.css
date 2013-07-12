@@ -20,11 +20,26 @@ body {
 	font-size: 18px;
 	color: #777777;
 }
-.slide footer#pagenumber {
+.slide footer.pagenumber {
 	left: inherit;
 	right: 17px;
 }
 
+/*
+ * Regretably, Shower's incredibly cool trick of using the :target pseudo
+ * element doesn't work when the DOM is populated asynchronously. So we 
+ * dynamically add and remove the "active" class to the slide instead. Same
+ * result.
+ */
+
+.full .slide {
+	position:absolute;
+	visibility: hidden;
+}
+
+.full .slide.active {
+	visibility: visible;
+}
 
 /*
  * <section> elements are sized to a width of 1024x768. So any work you do 
@@ -145,8 +160,10 @@ body {
 }
 
 
-/* Full
----------------------------------------- */
+/*
+ * Set up the body to be a single non-scrolling page.
+ */
+
 .full {
 	position:absolute;
 	top:50%;
@@ -156,25 +173,6 @@ body {
 	width:1024px;
 	height:768px;
 	background:#000;
-}
-
-// FIXME?
-.full .slide {
-	position:absolute;
-}
-
-/*
- * Page number is held in the div.slide:after content. Place at bottom right,
- * but don't show on .cover slides.
- */
-
-.full .slide:after {
-	position:absolute;
-	bottom:25px;
-	right:20px;
-	color:#BBB;
-	line-height:1;
-	font-size: 18px;
 }
 
 /*

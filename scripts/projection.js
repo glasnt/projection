@@ -39,11 +39,13 @@
 		}
 		lastSlide = slideList.length - 1;
 
+		loadAllSlides();
 		if (mode == "list") {
 			displayOverview();
 		} else {
 			displayCurrentSlide();
 		}
+
 	}, "text");
 
 /*
@@ -54,17 +56,19 @@
 		var pos;
 		var url;
 		var hash;
+		var query;
 
-		url = document.URL;
+		hash =  window.location.hash;
+		query = window.location.search;
 
-		pos = url.lastIndexOf('#')
-		if (pos == -1) {
+
+		if (query) {
+			mode = query.substring(1);
+		} else if (hash) {
+			initialSlide = hash.substring(1);
+		} else {
 			mode = "list";
-			return;
 		}
-
-		hash = url.substring(pos + 1);
-		initialSlide = hash;
 	}
 
 /*
@@ -103,7 +107,7 @@
 /*
  * Do the heavy lifting of loading and displaying the currently active slide.
  */
-	function fileToURL(filename) {
+	function fileToFragment(filename) {
 		var pos, basename;
 
 		pos = filename.lastIndexOf('/');
@@ -115,19 +119,20 @@
 		return basename;
 	}
 
-	function formatPageNumber() {
-		var page;
-		page = currentPosition + 1;
+	function formatPageNumber(pageIndex) {
+		var p;
 
-		if (page < 10) {
-			return "0" + page;
+		p = pageIndex + 1;
+
+		if (p < 10) {
+			return "0" + p.toString();
 		} else {
-			return page;
+			return p.toString();
 		}
 	}
 
 	function fragmentToTitle(fragment) {
-		page = formatPageNumber();
+		page = formatPageNumber(currentPosition);
 
 		return page + " - " + fragment;
 	}
@@ -149,31 +154,35 @@
 		var slide, fragment;
 
 		slide = slideList[currentPosition];
-		slide = slide + "?_=" + cacheStamp;
 	
-    		$("div.slide").load(slide, function() {
-			$("div.slide section").append(
-				"<footer id='pagenumber'>" + formatPageNumber() + "</footer>"
-			);
-		});
-
-		fragment = fileToURL(slide);
+		fragment = fileToFragment(slide);
 		document.title = fragmentToTitle(fragment);
 
+		// TODO replace with window.location fields?
 		url = pathFromURL(document.URL);
 
   		history.replaceState(null, null, url + "#" + fragment);
+
+		$(".active").removeClass("active");
+		$("#"+fragment).addClass("active");
 	}
 
 	function displayOverview() {
-		var slide, div;
+	}
+
+	function loadAllSlides() {
 		for (var i = 0; i < slideList.length; i++) {
-    			$("div.slide").before(function() {
+    			$("div.deck").append(function() {
+				var slide, div, target, page;
+
 				slide = slideList[i];
-				slide = slide + "?_=" + cacheStamp;
+				target = fileToFragment(slide);
+				page = formatPageNumber(i);
 				
-				div = $("<div id='" + i + "' style='display: none;'></div>");
-				div.load(slide);
+				div = $("<div id='" + target + "' class='slide'></div>");
+				div.load(slide, function() {
+					$("#" + target).append("<footer class='pagenumber'>" + page + "</footer>");
+				});
 
 				return div;
 			});
@@ -190,6 +199,7 @@
 	window.addEventListener('resize', function (e) {
 		doScaleBody();
 	}, false);
+
 
 /*
  * More than anything, this was the magic in shower.js; outstanding work to
@@ -260,7 +270,6 @@
 		);
 
 		var transform = 'scale(' + ratio + ')';
-
 
 		body.style.WebkitTransform = transform;
 		body.style.transform = transform;
