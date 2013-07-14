@@ -40,12 +40,17 @@
 		lastSlide = slideList.length - 1;
 
 		loadAllSlides();
-		displayCurrentSlide();
+		if (mode == "list") {
+			displayListMode();
+		} else {
+			displayCurrentSlide();
+		}
 
 	}, "text");
 
 /*
- * Was a specific slide specified at load?
+ * Was a specific slide specified at load? Figure that out, and also set
+ * the body CSS accordingly.
  */
 
 	function doInitialSlide() {
@@ -66,10 +71,6 @@
 
 		if (mode == "list") {
 			switchToList();
-		} else if (mode == "single") {
-			switchToSingle();
-		} else if (mode == "overview") {
-			switchToOverview();
 		} else {
 			switchToFull();
 		}
@@ -109,8 +110,10 @@
 
 
 /*
- * Do the heavy lifting of loading and displaying the currently active slide.
+ * Do the heavy lifting of loading and displaying the currently active
+ * slide.
  */
+
 	function fileToFragment(filename) {
 		var pos, basename;
 
@@ -141,19 +144,6 @@
 		return page + " - " + fragment;
 	}
 
-	function pathFromURL(url) {
-		var pos;
-
-		pos = url.indexOf('#');
-		if (pos > 0) {
-			path = url.substring(0, pos);
-		} else {
-			path = url;
-		}
-
-		return path;
-	}
-
 	function displayCurrentSlide() {
 		var slide, fragment;
 
@@ -162,34 +152,47 @@
 		fragment = fileToFragment(slide);
 		document.title = fragmentToTitle(fragment);
 
-		// TODO replace with window.location fields?
-		url = pathFromURL(document.URL);
-
-  		history.replaceState(null, null, url + "#" + fragment);
+		url = window.location.origin + window.location.pathname + "#" + fragment;
+  		history.replaceState(null, null, url);
 
 		$(".active").removeClass("active");
 		$("#"+fragment).addClass("active");
 	}
 
-	function switchToList() {
-		$("body").removeClass();
-		$("body").addClass("list");
-	}
-
-	function switchToSingle() {
-		$("body").removeClass();
-		$("body").addClass("single");
-	}
-
-	function switchToOverview() {
-		$("body").removeClass();
-		$("body").addClass("overview");
-	}
+/*
+ * Set overall style for normal full frame slide view or list mode as the case may be
+ */
 
 	function switchToFull() {
 		$("body").removeClass();
 		$("body").addClass("full");
+
+		mode = "full";
+		doScaleBody();
 	}
+
+	function switchToList() {
+		$("body").removeClass();
+		$("body").addClass("list");
+
+		mode = "list";
+		doScaleBody();
+	}
+
+	function displayListMode() {
+		document.title = "All Slides";
+
+		url = window.location.origin + window.location.pathname + "?list"
+		history.replaceState(null, null, url);
+
+		mode = "list";
+	}
+
+/*
+ * The other meaty bit: with the list of slides in hand, asynchronously
+ * load each one of them into a div id'd by the basename of the
+ * containing file, then add a page number to it.
+ */
 
 	function loadAllSlides() {
 		for (var i = 0; i < slideList.length; i++) {
@@ -232,6 +235,19 @@
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
 		switch (e.which) {
+			case 116: // F5
+			case 13: // Enter
+				e.preventDefault();
+				switchToFull();
+				displayCurrentSlide();
+			break;
+
+			case 27: // Esc
+				e.preventDefault();
+				switchToList();
+				displayListMode();
+			break;
+
 			
 			case 33: // PgUp
 			case 38: // Up
