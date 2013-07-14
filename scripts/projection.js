@@ -40,11 +40,7 @@
 		lastSlide = slideList.length - 1;
 
 		loadAllSlides();
-		if (mode == "list") {
-			displayOverview();
-		} else {
-			displayCurrentSlide();
-		}
+		displayCurrentSlide();
 
 	}, "text");
 
@@ -61,13 +57,21 @@
 		hash =  window.location.hash;
 		query = window.location.search;
 
-
 		if (query) {
 			mode = query.substring(1);
-		} else if (hash) {
+		}
+		if (hash) {
 			initialSlide = hash.substring(1);
+		}
+
+		if (mode == "list") {
+			switchToList();
+		} else if (mode == "single") {
+			switchToSingle();
+		} else if (mode == "overview") {
+			switchToOverview();
 		} else {
-			mode = "list";
+			switchToFull();
 		}
 	}
 
@@ -167,7 +171,24 @@
 		$("#"+fragment).addClass("active");
 	}
 
-	function displayOverview() {
+	function switchToList() {
+		$("body").removeClass();
+		$("body").addClass("list");
+	}
+
+	function switchToSingle() {
+		$("body").removeClass();
+		$("body").addClass("single");
+	}
+
+	function switchToOverview() {
+		$("body").removeClass();
+		$("body").addClass("overview");
+	}
+
+	function switchToFull() {
+		$("body").removeClass();
+		$("body").addClass("full");
 	}
 
 	function loadAllSlides() {
@@ -250,13 +271,6 @@
 		}
 	}, false);
 
-	function doSetupWindow() {
-		if (body.className) {
-			body.className = body.className + " full";
-		} else {
-			body.className = "full";
-		}
-	}
 
 /*
  * The other shower.js piece of magic: scale the body as a whole; having
@@ -264,12 +278,18 @@
  */
 
 	function doScaleBody() {
-		var ratio = Math.min(
+		var transform, ratio;
+
+		ratio = Math.min(
 			window.innerWidth / 1024,
 			window.innerHeight / 768
 		);
 
-		var transform = 'scale(' + ratio + ')';
+		if (mode == "list") {
+			transform = 'scale(1)';
+		} else {
+			transform = 'scale(' + ratio + ')';
+		}
 
 		body.style.WebkitTransform = transform;
 		body.style.transform = transform;
@@ -279,7 +299,6 @@
 	}
 
 	doInitialSlide();
-	doSetupWindow();
 	doScaleBody();
 
 /*
