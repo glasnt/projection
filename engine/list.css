@@ -2,42 +2,42 @@
     	background:#585A5E;
 }
 
-/* Slide */
+.list div.deck {
+	float: left;
+	padding: 20px;
+}
+
 .list div.slide {
 	position: relative;
 	float: left;
-	margin-left: 25px;
-    	margin-right: 25px;
-	padding: 80px;
-}
-.list div.slide > section {
-	position: relative;
+	margin: 50px;
+	padding: 0px;
+	border: 80px;
 	overflow: hidden;
 	box-shadow: 0 0 50px #3C3D40;
+	width: 512px;
+	height: 384px;
 }
-.list div.slide > section:hover {
+.list div.slide:hover {
 	box-shadow:
 		0 0 0 1px #305F8D,
 		0 0 0 21px #3C7CBD,
 		0 0 50px #3C3D40;
-	border-radius: 9px;
+	border-radius: 3px;
 }
-/*
-.list div.slide {
-	-webkit-transform-origin:0 0;
-	-webkit-transform:scale(0.5);
-	-moz-transform-origin:0 0;
-	-moz-transform:scale(0.5);
-	-ms-transform-origin:0 0;
-	-ms-transform:scale(0.5);
-	-o-transform-origin:0 0;
-	-o-transform:scale(0.5);
-	transform-origin:0 0;
-	transform:scale(0.5);
-	width:512px;
-	height:384px;
+.list div.slide > section {
+	-webkit-transform-origin: 0 0;
+	-webkit-transform: scale(0.5);
+	-moz-transform-origin: 0 0;
+	-moz-transform: scale(0.5);
+	-ms-transform-origin: 0 0;
+	-ms-transform: scale(0.5);
+	-o-transform-origin: 0 0;
+	-o-transform: scale(0.5);
+	transform-origin: 0 0;
+	transform: scale(0.5);
 }
-*/
+
 /*
 @media all and (max-width:1500px) {
 	.list .slide > section {
