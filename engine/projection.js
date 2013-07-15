@@ -2,6 +2,7 @@
 	var body = document.body;
 	var mode;
 	var slideList = new Array();
+	var targetMap = new Object();
 	var lastSlide;
 	var currentPosition = 0;
 	var cacheStamp;
@@ -203,6 +204,8 @@
 
 				slide = slideList[i];
 				target = fileToFragment(slide);
+				targetMap[target] = i;
+
 				page = formatPageNumber(i);
 				
 				div = $("<div id='" + target + "' class='slide'></div>");
@@ -217,14 +220,48 @@
 
 
 /*
- * Event handlers. Note that there is /not/ a handler for 'click' in order
- * that users can click on links that might happen to be placed in pages;
- * when I give presentations I always use the keyboard to advance slides.
+ * Event handlers. Note that 'click' handler is only used in list mode in order
+ * that users can click on links that might happen to be placed in pages; when
+ * I give presentations I always use the keyboard to advance slides.
  */
+
+	function getSlideContainingEvent(e) {
+		var node;
+
+		node = e.target;
+
+		while ("HTML" !== node.nodeName) {
+			if (node.classList.contains('slide')) {
+				return node.id;
+			} else {
+				node = node.parentNode;
+			}
+		}
+
+		return '';
+	}
+
+	function setCurrentSlideFromEvent(e) {
+		var slide;
+
+		slide = getSlideContainingEvent(e);
+		if (slide) {
+			currentPosition = targetMap[slide];
+		}
+	}
+
+	window.addEventListener('click', function (e) {
+		if (mode == "list") {
+			setCurrentSlideFromEvent(e);
+			displayCurrentSlide();
+		}
+	}, false);
+
 
 	window.addEventListener('resize', function (e) {
 		doScaleBody();
 	}, false);
+
 
 
 /*
