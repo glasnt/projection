@@ -40,11 +40,7 @@
 		lastSlide = slideList.length - 1;
 
 		loadAllSlides();
-		if (mode == "list") {
-			displayListMode();
-		} else {
-			displayCurrentSlide();
-		}
+		displayCurrentSlide();
 
 	}, "text");
 
@@ -65,7 +61,7 @@
 		if (query) {
 			mode = query.substring(1);
 		}
-		if (hash) {
+		if (fragment) {
 			initialSlide = fragment.substring(1);
 		}
 
@@ -150,7 +146,12 @@
 		slide = slideList[currentPosition];
 	
 		fragment = fileToFragment(slide);
-		document.title = fragmentToTitle(fragment);
+
+		if (mode == "list") {
+			document.title = "All Slides";
+		} else {
+			document.title = fragmentToTitle(fragment);
+		}
 
 		url = window.location.origin + window.location.pathname + window.location.search + "#" + fragment;
   		history.replaceState(null, null, url);
@@ -161,7 +162,7 @@
 
 /*
  * Set overall style for normal full frame slide view or list mode, as the case
- * may be.
+ * may be. Add or remove the ?list query string indicating list mode.
  */
 
 	function switchToFull() {
@@ -170,33 +171,24 @@
 
 		mode = "full";
 		doScaleBody();
+
+		url = window.location.origin + window.location.pathname + window.location.hash;
+		history.replaceState(null, null, url);
 	}
 
 	function switchToList() {
+		var fragment;
+
 		$("body").removeClass();
 		$("body").addClass("list");
 
 		mode = "list";
 		doScaleBody();
-	}
-
-/*
- * Add or remove the ?list query string, indicating list mode.
- */
-
-	function removeListMode() {
-		url = window.location.origin + window.location.pathname + window.location.hash;
-		history.replaceState(null, null, url);
-	}
-
-	function addListMode() {
-		var fragment;
-
-		document.title = "All Slides";
 
 		url = window.location.origin + window.location.pathname + "?list" + window.location.hash;
 		history.replaceState(null, null, url);
 	}
+
 
 /*
  * The other meaty bit: with the list of slides in hand, asynchronously load
@@ -249,14 +241,13 @@
 			case 13: // Enter
 				e.preventDefault();
 				switchToFull();
-				removeListMode();
 				displayCurrentSlide();
 			break;
 
 			case 27: // Esc
 				e.preventDefault();
 				switchToList();
-				displayListMode();
+				displayCurrentSlide();
 			break;
 
 			
