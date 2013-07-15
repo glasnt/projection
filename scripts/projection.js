@@ -56,17 +56,17 @@
 	function doInitialSlide() {
 		var pos;
 		var url;
-		var hash;
+		var fragment;
 		var query;
 
-		hash =  window.location.hash;
+		fragment = window.location.hash;
 		query = window.location.search;
 
 		if (query) {
 			mode = query.substring(1);
 		}
 		if (hash) {
-			initialSlide = hash.substring(1);
+			initialSlide = fragment.substring(1);
 		}
 
 		if (mode == "list") {
@@ -110,8 +110,8 @@
 
 
 /*
- * Do the heavy lifting of loading and displaying the currently active
- * slide.
+ * Do the heavy lifting of loading and displaying the currently active slide.
+ * Note that this is called on both full and list mode code paths.
  */
 
 	function fileToFragment(filename) {
@@ -152,7 +152,7 @@
 		fragment = fileToFragment(slide);
 		document.title = fragmentToTitle(fragment);
 
-		url = window.location.origin + window.location.pathname + "#" + fragment;
+		url = window.location.origin + window.location.pathname + window.location.search + "#" + fragment;
   		history.replaceState(null, null, url);
 
 		$(".active").removeClass("active");
@@ -160,7 +160,8 @@
 	}
 
 /*
- * Set overall style for normal full frame slide view or list mode as the case may be
+ * Set overall style for normal full frame slide view or list mode, as the case
+ * may be.
  */
 
 	function switchToFull() {
@@ -179,19 +180,28 @@
 		doScaleBody();
 	}
 
-	function displayListMode() {
+/*
+ * Add or remove the ?list query string, indicating list mode.
+ */
+
+	function removeListMode() {
+		url = window.location.origin + window.location.pathname + window.location.hash;
+		history.replaceState(null, null, url);
+	}
+
+	function addListMode() {
+		var fragment;
+
 		document.title = "All Slides";
 
-		url = window.location.origin + window.location.pathname + "?list"
+		url = window.location.origin + window.location.pathname + "?list" + window.location.hash;
 		history.replaceState(null, null, url);
-
-		mode = "list";
 	}
 
 /*
- * The other meaty bit: with the list of slides in hand, asynchronously
- * load each one of them into a div id'd by the basename of the
- * containing file, then add a page number to it.
+ * The other meaty bit: with the list of slides in hand, asynchronously load
+ * each one of them into a div id'd by the basename of the containing file,
+ * then add a page number to it.
  */
 
 	function loadAllSlides() {
@@ -239,6 +249,7 @@
 			case 13: // Enter
 				e.preventDefault();
 				switchToFull();
+				removeListMode();
 				displayCurrentSlide();
 			break;
 
