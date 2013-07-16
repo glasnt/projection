@@ -50,7 +50,7 @@
 	height: 384px;
 }
 
-.list div.slide > section {
+.list div.slide section {
 	-webkit-transform-origin: 0 0;
 	-webkit-transform: scale(0.5);
 	-moz-transform-origin: 0 0;
@@ -69,7 +69,7 @@
 		width:256px;
 		height:192px;
 	}
-	.list div.slide > section {
+	.list div.slide section {
 		-webkit-transform:scale(0.25);
 		-moz-transform:scale(0.25);
 		-ms-transform:scale(0.25);
@@ -83,7 +83,7 @@
 		width:204px;
 		height: 153px;
 	}
-	.list div.slide > section {
+	.list div.slide section {
 		-webkit-transform:scale(0.2);
 		-moz-transform:scale(0.2);
 		-ms-transform:scale(0.2);
@@ -92,3 +92,23 @@
 	}
 }
 */
+
+/*
+ * This is a hack to allow clicking on slide thumbnails when in list mode. The
+ * problem is <embed> elements hosting SVG (and presumably anything else)
+ * interfere with 'click' handlers. The solution is to lay a div over the whole
+ * slide, but this has to be done from *within* the <section>, not after it.
+ * We hide it in full mode so we can go back to normal links working.
+ */
+
+div.slide section div.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1024px;
+	height: 768px;
+}
+
+.full div.slide section div.overlay {
+	visibility: hidden;
+}

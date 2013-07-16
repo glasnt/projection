@@ -209,8 +209,10 @@
 				page = formatPageNumber(i);
 				
 				div = $("<div id='" + target + "' class='slide'></div>");
+
 				div.load(slide, function() {
-					$("#" + target).append("<footer class='pagenumber'>" + page + "</footer>");
+					$("#" + target + " section").append("<footer class='pagenumber'>" + page + "</footer>");
+					$("#" + target + " section").append("<div class='overlay'></div>");
 				});
 
 				return div;
@@ -254,6 +256,17 @@
 		if (mode == "list") {
 			setCurrentSlideFromEvent(e);
 			displayCurrentSlide();
+		}
+	}, false);
+
+/*
+ * A 'click' event will already have changed the current slide, so we merely
+ * toggle back to full mode.
+ */
+
+	window.addEventListener('dblclick', function (e) {
+		if (mode == "list") {
+			switchToFull();
 		}
 	}, false);
 
