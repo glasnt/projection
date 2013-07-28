@@ -142,7 +142,7 @@
 	}
 
 	function displayCurrentSlide() {
-		var slide, fragment;
+		var slide, fragment, element;
 
 		slide = slideList[currentPosition];
 	
@@ -158,7 +158,9 @@
   		history.replaceState(null, null, url);
 
 		$(".active").removeClass("active");
-		$("#"+fragment).addClass("active");
+
+		element = document.getElementById(fragment);
+		$(element).addClass("active");
 	}
 
 /*
@@ -211,8 +213,18 @@
 				div = $("<div id='" + target + "' class='slide'></div>");
 
 				div.load(slide, function() {
-					$("#" + target + " section").append("<footer class='pagenumber'>" + page + "</footer>");
-					$("#" + target + " section").append("<div class='overlay'></div>");
+					var element, children, section;
+
+					element = document.getElementById(target);
+					children = element.getElementsByTagName("section");
+
+					if (children.length != 1) {
+						return;
+					}
+					section = children[0];
+
+					$(section).append("<footer class='pagenumber'>" + page + "</footer>");
+					$(section).append("<div class='overlay'></div>");
 				});
 
 				return div;
