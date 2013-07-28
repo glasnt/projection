@@ -68,6 +68,8 @@
 
 		if (mode == "list") {
 			switchToList();
+		} else if (mode == "single") {
+			switchToSingle();
 		} else {
 			switchToFull();
 		}
@@ -142,7 +144,7 @@
 	}
 
 	function displayCurrentSlide() {
-		var slide, fragment, element;
+		var slide, fragment, element, url;
 
 		slide = slideList[currentPosition];
 	
@@ -169,6 +171,8 @@
  */
 
 	function switchToFull() {
+		var url;
+
 		$("body").removeClass();
 		$("body").addClass("full");
 
@@ -180,7 +184,7 @@
 	}
 
 	function switchToList() {
-		var fragment;
+		var url;
 
 		$("body").removeClass();
 		$("body").addClass("list");
@@ -189,6 +193,19 @@
 		doScaleBody();
 
 		url = window.location.origin + window.location.pathname + "?list" + window.location.hash;
+		history.replaceState(null, null, url);
+	}
+
+	function switchToSingle() {
+		var url;
+
+		$("body").removeClass();
+		$("body").addClass("single");
+
+		mode = "single";
+		doScaleBody();
+
+		url = window.location.origin + window.location.pathname + "?single" + window.location.hash;
 		history.replaceState(null, null, url);
 	}
 
@@ -268,6 +285,11 @@
 		if (mode == "list") {
 			setCurrentSlideFromEvent(e);
 			displayCurrentSlide();
+		} else if (mode == "single") {
+			var url;
+
+			url = window.location.origin + window.location.pathname + window.location.hash;
+			window.parent.location = url;
 		}
 	}, false);
 
@@ -295,6 +317,10 @@
  */
 
 	document.addEventListener('keydown', function (e) {
+		if (mode == "single") {
+			return;
+		}
+
 		// Shortcut for alt, shift and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
