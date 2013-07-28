@@ -64,22 +64,25 @@ body {
 }
 
 /*
- * Using CSS class "graphic" causes us to center the (single) image
- * on the page.
+ * Using CSS class "graphic" causes us to center the (single) image on the
+ * page. If the image is too large, hold it within the metrics of the <section>
+ * canvas.
  */
-.slide.graphic img,
-.slide.graphic svg,
-.slide.graphic object,
-.slide.graphic embed {
+
+.slide section.graphic img,
+.slide section.graphic svg,
+.slide section.graphic object,
+.slide section.graphic embed {
 	position:absolute;
 	left: 50%;
 	top: 50%;
 	z-index: 0;
-	-webkit-transform:translateX(-50%) translateY(-50%);
-	-moz-transform:translateX(-50%) translateY(-50%);
-	-ms-transform:translateX(-50%) translateY(-50%);
-	-o-transform:translateX(-50%) translateY(-50%);
-	transform:translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-o-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	max-width: 864px;
+	max-height: 718px;
 }
 
 
@@ -88,15 +91,15 @@ body {
  * the entire slide. The "cover w" variant stretches in the horizontal 
  * direction
  */
-.slide.cover section {
+.slide section.cover {
 	background:#000;
 	overflow:hidden;
 }
 
-.slide.cover img,
-.slide.cover svg,
-.slide.cover video,
-.slide.cover object {
+.slide section.cover img,
+.slide section.cover svg,
+.slide section.cover video,
+.slide section.cover object {
 	position:absolute;
 	top:0;
 	left:50%;
@@ -109,10 +112,10 @@ body {
 	transform:translateX(-50%);
 }
 
-.slide.cover.w img,
-.slide.cover.w svg,
-.slide.cover.w video,
-.slide.cover.w object {
+.slide section.cover.w img,
+.slide section.cover.w svg,
+.slide section.cover.w video,
+.slide section.cover.w object {
 	top:50%;
 	left:0;
 	width:100%;
@@ -130,7 +133,7 @@ body {
  * ensure that wrapped text doesn't bark the edge of the screen. Note that
  * this is not restricted to the standard slide canvas area.
  */
-.slide.shout h2 {
+.slide section.shout h2 {
 	position:absolute;
 	top:50%;
 	left:5%;
@@ -149,7 +152,7 @@ body {
  * For any arbitrary element, center it horizontally and vertically. This has
  * the same effect as the graphic slide class does.
  */
-.middle {
+.slide section .middle {
 	position:absolute;
 	top:50%;
 	left:50%;
