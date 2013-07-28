@@ -103,7 +103,7 @@ body {
 	position:absolute;
 	top:0;
 	left:50%;
-	z-index: 0;
+	z-index: -1;
 	height:100%;
 	-webkit-transform:translateX(-50%);
 	-moz-transform:translateX(-50%);
@@ -120,6 +120,7 @@ body {
 	left:0;
 	width:100%;
 	height:auto;
+	z-index: -1;
 	-webkit-transform:translateY(-50%);
 	-moz-transform:translateY(-50%);
 	-ms-transform:translateY(-50%);
