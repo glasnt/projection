@@ -377,6 +377,27 @@
 		}
 	}, false);
 
+	document.addEventListener('touchstart', function (e) {
+		if (mode == "single") {
+			return;
+		}
+		x = e.touches[0].pageX;
+		if (x > window.innerWidth / 4) {
+			goForward();
+		} else {
+			goBack();
+		}
+		e.preventDefault();
+	}, false);
+
+	document.addEventListener('touchend', function (e) {
+		if (mode == "single") {
+			return;
+		}
+		e.preventDefault();
+	}, false);
+
+
 
 /*
  * The other shower.js piece of magic: scale the body as a whole; having
