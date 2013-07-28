@@ -1,0 +1,113 @@
+.list {
+    	background:#585A5E;
+}
+
+.list div.deck {
+	padding: 20px;
+}
+
+/*
+ * Put a blue border around the active slide, and a gray one around a slide
+ * being hovered over. I freely admit I don't understand the box-shadow
+ * property very well.
+ */
+
+.list div.slide {
+	position: relative;
+	float: left;
+	margin: 50px;
+	padding: 0px;
+	border: 80px;
+	overflow: hidden;
+	box-shadow:
+		0 0 50px #3c3d40;
+}
+.list div.slide:hover {
+	box-shadow:
+		0 0 0 21px #3c3d40,
+		0 0 50px #3c3d40;
+	border-radius: 3px;
+
+}
+.list div.slide.active {
+	box-shadow:
+		0 0 0 1px #305f8d,
+		0 0 0 21px #3c7cbd,
+		0 0 50px #3c3d40;
+	border-radius: 3px;
+}
+
+/*
+ * Size the individual slides down. This has to be co-ordinated with the
+ * specified size of the parent div, otherwise you get large gaps around the
+ * scaled slides (the parent box remains the size necessary to hold it
+ * pre-scaling). This is all very voodoo.
+ */
+
+.list div.slide {
+	width: 512px;
+	height: 384px;
+}
+
+.list div.slide section {
+	-webkit-transform-origin: 0 0;
+	-webkit-transform: scale(0.5);
+	-moz-transform-origin: 0 0;
+	-moz-transform: scale(0.5);
+	-ms-transform-origin: 0 0;
+	-ms-transform: scale(0.5);
+	-o-transform-origin: 0 0;
+	-o-transform: scale(0.5);
+	transform-origin: 0 0;
+	transform: scale(0.5);
+}
+
+/*
+@media all and (max-width:1500px) {
+	.list div.slide {
+		width:256px;
+		height:192px;
+	}
+	.list div.slide section {
+		-webkit-transform:scale(0.25);
+		-moz-transform:scale(0.25);
+		-ms-transform:scale(0.25);
+		-o-transform:scale(0.25);
+		transform:scale(0.25);
+	}
+}
+
+@media all and (max-width:1000px) {
+	.list div.slide {
+		width:204px;
+		height: 153px;
+	}
+	.list div.slide section {
+		-webkit-transform:scale(0.2);
+		-moz-transform:scale(0.2);
+		-ms-transform:scale(0.2);
+		-o-transform:scale(0.2);
+		transform:scale(0.2);
+	}
+}
+*/
+
+/*
+ * This is a hack to allow clicking on slide thumbnails when in list mode. The
+ * problem is <embed> elements hosting SVG (and presumably anything else)
+ * interfere with 'click' handlers. The solution is to lay a div over the whole
+ * slide, but this has to be done from *within* the <section>, not after it.
+ * We hide it in full mode so we can go back to normal links working.
+ */
+
+div.slide section div.overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1024px;
+	height: 768px;
+}
+
+.full div.slide section div.overlay {
+	visibility: hidden;
+}
