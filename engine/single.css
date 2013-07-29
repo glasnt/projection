@@ -4,13 +4,11 @@
 
 .single {
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	top: 0;
+	left: 0;
 	overflow: hidden;
-	margin: -384px 0 0 -512px;
-	width: 1024px;
-	height: 768px;
-	background: #000000;
+	margin: 0 0 0 0;
+	background: #ffffff;
 }
 
 /*
@@ -35,5 +33,10 @@
 
 .single .slide.active {
 	visibility: visible;
+}
+
+.single div.slide {
+	width: 1024px;
+	height: 768px;
 }
 
