@@ -1,5 +1,4 @@
 (function () {
-	var body = document.body;
 	var mode;
 	var slideList = new Array();
 	var targetMap = new Object();
@@ -405,6 +404,7 @@
 
 	function doScaleBody() {
 		var transform, ratio;
+		var body = document.body;
 
 		ratio = Math.min(
 			window.innerWidth / 1024,
@@ -424,8 +424,10 @@
 		body.style.OTransform = transform;
 	}
 
-	doInitialSlide();
-	doScaleBody();
+	$(document).ready(function () {
+		doInitialSlide();
+		doScaleBody();
+	});
 
 /*
  * Finaly, the initial slide render is done in the callback when the list of
