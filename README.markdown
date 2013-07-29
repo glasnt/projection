@@ -1,24 +1,12 @@
 Projection
 ==========
 
-<style>
-<!--
-pre { font-family: monospace; color: #000000; background-color: #ffffff; }
-.String { color: #204a87; font-weight: bold; }
-.Statement { color: #8f5902; font-weight: bold; }
-.LineNr { color: #eeeeec; }
-.Comment { color: #888a85; }
-.Type { color: #73d216; font-weight: bold; }
-.Identifier { color: #729fcf; }
--->
-</style>
-
 A simple HTML based presentation tool.
 --------------------------------------
 
 You write your slides in individual .html files, make a list, and then upload them to a server. Ta-da!
 
-In Projection, each .html fragment contains a single `<section>` element with your slide content.
+In Projection, each .html fragment contains a single `<section>` element with your slide content:
 
 ```html
 <section>
@@ -54,8 +42,7 @@ You don't have to assign them to be `class="slide"` or anything like that. The t
 </html>
 ```
 
-Projection is, essentially, a refactoring of the most excellent [Shower](http://shwr.me/) by Vadim Makeev. Frankly, it's _amazing_, and studying it I learned a lot about what is possible with raw JavaScript, HTML 5, and CSS 3. I won't feel bad in the slightest if you think the original Shower -- 
-or one of the approximately 7 million other HTML based presentation tools -- is better.
+Projection is, essentially, a refactoring of the most excellent [Shower](http://shwr.me/) by Vadim Makeev. Frankly, it's _amazing_, and studying it I learned a lot about what is possible with raw JavaScript, HTML 5, and CSS 3. I won't feel bad in the slightest if you think the original Shower — or one of the approximately 7 million other HTML based presentation tools — is better.
 
 AfC
 
