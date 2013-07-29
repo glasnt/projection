@@ -378,7 +378,7 @@
 	}, false);
 
 	document.addEventListener('touchstart', function (e) {
-		if (mode == "single") {
+		if (mode != "full") {
 			return;
 		}
 		x = e.touches[0].pageX;
@@ -387,11 +387,10 @@
 		} else {
 			goBack();
 		}
-		e.preventDefault();
 	}, false);
 
-	document.addEventListener('touchend', function (e) {
-		if (mode == "single") {
+	document.addEventListener('touchmove', function (e) {
+		if (mode != "full") {
 			return;
 		}
 		e.preventDefault();
