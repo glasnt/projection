@@ -180,6 +180,12 @@ body {
 	background: #000000;
 }
 
+.full div.slide {
+	width: 1024px;
+	height: 768px;
+}
+
+
 /*
  * This seems to be a bit of voodoo. Setting the scale smaller makes sense
  * for thumbnails, but why does it have to be set under normal conditions?
