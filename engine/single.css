@@ -1,0 +1,42 @@
+/*
+ * Same setup as .full
+ */
+
+.single {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	margin: 0 0 0 0;
+	background: #ffffff;
+}
+
+/*
+ * This seems to be a bit of voodoo. Setting the scale smaller makes sense
+ * for thumbnails, but why does it have to be set under normal conditions?
+ * On Chrome the default was -webkit-transform: none;. This changes it to
+ * matrix(1, 0, 0, 1, 0, 0);
+ */
+
+.single .slide section {
+	-webkit-transform:scale(1);
+	-moz-transform:scale(1);
+	-ms-transform:scale(1);
+	-o-transform:scale(1);
+	transform:scale(1);
+}
+
+.single .slide {
+	position:absolute;
+	visibility: hidden;
+}
+
+.single .slide.active {
+	visibility: visible;
+}
+
+.single div.slide {
+	width: 1024px;
+	height: 768px;
+}
+
