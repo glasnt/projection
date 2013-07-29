@@ -184,6 +184,7 @@
 
 	function switchToList() {
 		var url;
+		var slide, fragment, element;
 
 		$("body").removeClass();
 		$("body").addClass("list");
@@ -193,6 +194,11 @@
 
 		url = window.location.origin + window.location.pathname + "?list" + window.location.hash;
 		history.replaceState(null, null, url);
+
+		slide = slideList[currentPosition];
+		fragment = fileToFragment(slide);
+		element = document.getElementById(fragment);
+		window.scrollTo(0, element.offsetTop - 50);
 	}
 
 	function switchToSingle() {
