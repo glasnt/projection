@@ -11,18 +11,25 @@ body {
 }
 
 /*
- * Page number
+ * Footnotes and Page Number. Links (to references) in footnotes are kept
+ * subtle.
  */
+
 .slide footer {
 	position: absolute;
 	bottom: 15px;
 	left: 80px;
 	font-size: 18px;
 	color: #777777;
+	max-width: 864px;
 }
 .slide footer.pagenumber {
 	left: inherit;
 	right: 17px;
+}
+
+.slide footer a {
+	color: #777777;
 }
 
 /*
