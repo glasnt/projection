@@ -1,14 +1,12 @@
 /*
-    Forked from
-	Ribbon theme for Shower presentation template: http://github.com/pepelsbey/shower
-	Copyright © 2010–2011 Vadim Makeev, http://pepelsbey.net/
-	Licensed under MIT license: https://github.com/pepelsbey/shower/wiki/License
-*/
-
-
-body {
-	counter-reset:paging;
-}
+ * Default slide theming, and machinery for full screen.
+*
+ * Copyright © 2010-2011 Vadim Makeev
+ * Copyright © 2013-     Operational Dynamics Consulting, Pty Ltd
+ *
+ * Forked from the "ribbon" theme for the Shower presentation tool, used
+ * under the MIT Open Source licence.
+ */
 
 /*
  * Footnotes and Page Number. Links (to references) in footnotes are kept
@@ -40,7 +38,7 @@ body {
  */
 
 .full .slide {
-	position:absolute;
+	position: absolute;
 	visibility: hidden;
 }
 
@@ -54,6 +52,7 @@ body {
  * That is then given 50 top and 80 padding on each side, leaving the canvas
  * at 864x718.
  */
+
 .slide section {
 	padding-top: 50px;
 	padding-left: 80px;
@@ -80,7 +79,7 @@ body {
 .slide section.graphic svg,
 .slide section.graphic object,
 .slide section.graphic embed {
-	position:absolute;
+	position: absolute;
 	left: 50%;
 	top: 50%;
 	z-index: 0;
@@ -95,44 +94,45 @@ body {
 
 /*
  * "cover" is for when you have an image that you want to stretch to cover
- * the entire slide. The "cover w" variant stretches in the horizontal 
+ * the entire slide. The "cover wide" variant stretches in the horizontal 
  * direction
  */
+
 .slide section.cover {
-	background:#000;
-	overflow:hidden;
+	background: #000;
+	overflow: hidden;
 }
 
 .slide section.cover img,
 .slide section.cover svg,
 .slide section.cover video,
 .slide section.cover object {
-	position:absolute;
-	top:0;
-	left:50%;
-	z-index: -1;
-	height:100%;
-	-webkit-transform:translateX(-50%);
-	-moz-transform:translateX(-50%);
-	-ms-transform:translateX(-50%);
-	-o-transform:translateX(-50%);
-	transform:translateX(-50%);
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index:  -1;
+	height: 100%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
 }
 
-.slide section.cover.w img,
-.slide section.cover.w svg,
-.slide section.cover.w video,
-.slide section.cover.w object {
-	top:50%;
-	left:0;
-	width:100%;
-	height:auto;
-	z-index: -1;
-	-webkit-transform:translateY(-50%);
-	-moz-transform:translateY(-50%);
-	-ms-transform:translateY(-50%);
-	-o-transform:translateY(-50%);
-	transform:translateY(-50%);
+.slide section.cover.wide img,
+.slide section.cover.wide svg,
+.slide section.cover.wide video,
+.slide section.cover.wide object {
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: auto;
+	z-index:  -1;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 /*
@@ -141,34 +141,36 @@ body {
  * ensure that wrapped text doesn't bark the edge of the screen. Note that
  * this is not restricted to the standard slide canvas area.
  */
+
 .slide section.shout h2 {
-	position:absolute;
-	top:50%;
-	left:5%;
-	width:90%;
-	text-align:center;
-	line-height:1;
-	font-size:150px;
-	-webkit-transform:translateY(-50%);
-	-moz-transform:translateY(-50%);
-	-ms-transform:translateY(-50%);
-	-o-transform:translateY(-50%);
-	transform:translateY(-50%);
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	width: 90%;
+	text-align: center;
+	line-height: 1;
+	font-size: 150px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 
 /*
  * For any arbitrary element, center it horizontally and vertically. This has
  * the same effect as the graphic slide class does.
  */
+
 .slide section .middle {
-	position:absolute;
-	top:50%;
-	left:50%;
-	-webkit-transform:translate(-50%, -50%);
-	-moz-transform:translate(-50%, -50%);
-	-ms-transform:translate(-50%, -50%);
-	-o-transform:translate(-50%, -50%);
-	transform:translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 }
 
 
@@ -176,7 +178,7 @@ body {
  * Set up the body to be a single non-scrolling page.
  */
 
-.full {
+body.full {
 	position: absolute;
 	top: 50%;
 	left: 50%;

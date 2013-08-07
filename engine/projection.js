@@ -1,3 +1,13 @@
+/*
+ * Supporting code for the Projection presentation engine.
+
+ * Copyright © 2010-2011 Vadim Makeev
+ * Copyright © 2013-     Operational Dynamics Consulting, Pty Ltd
+ *
+ * Event handling logic forked from the Shower presentation tool, used
+ * under the MIT Open Source licence.
+ */
+
 (function () {
 	var mode;
 	var slideList = new Array();
