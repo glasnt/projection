@@ -145,3 +145,10 @@ body {
 	padding-left: 0px;
 	font-size: 22px;
 }
+
+.slide section.comment {
+	background-image: url("comment-stripe.png");
+	background-repeat: repeat-y;
+	background-size: 60px;
+	background-color: #d3d7cf;
+}
