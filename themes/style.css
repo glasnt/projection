@@ -1,16 +1,24 @@
 /*
-    Forked from
-	Ribbon theme for Shower presentation template: http://github.com/pepelsbey/shower
-	Copyright © 2010–2011 Vadim Makeev, http://pepelsbey.net/
-	Licensed under MIT license: https://github.com/pepelsbey/shower/wiki/License
-*/
+ * Default slide theming, and machinery for full screen.
+ *
+ * Copyright © 2010-2011 Vadim Makeev
+ * Copyright © 2013-     Operational Dynamics Consulting, Pty Ltd
+ *
+ * Forked from the "ribbon" theme for the Shower presentation tool, used
+ * under the MIT Open Source licence.
+ */
 
+/*
+ * Replying on Google APIs is dangerous. If you're giving a presentation and
+ * don't have internet access, you are at risk of the browser deciding it
+ * doesn't have a current version of this resoure, and BOOM your presentation
+ * goes to hell. This directory has fonts.css which is a fairly detailed
+ * example of specifying the font families directly.
+ */
 
 /*
 @import url(fonts.css);
-@import url(reset.css);
 */
-
 @import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|PT+Sans+Narrow:400,700);
 
 body {
@@ -18,7 +26,9 @@ body {
 }
 
 /*
- * Logo, bottom left
+ * Place the company logo, bottom left. This is done using the :before
+ * pseudo-class, which is a bit voodoo, but saves you having to dynamically
+ * insert a <div> in the DOM.
  */
 
 .slide section:before {
@@ -41,21 +51,23 @@ body {
 .slide h1 {
 	margin-top: 0px;
 	margin-bottom: 20px;
-	color:#666;
-	font:bold 48px/1.13 'PT Sans Narrow', sans-serif;
+	color: #666;
+	font: bold 48px/1.13 'PT Sans Narrow', sans-serif;
 }
 .slide h2 {
 	margin-top: 0px;
 	margin-bottom: 16px;
-	color:#666;
-	font:bold 36px/1.13 'PT Sans Narrow', sans-serif;
+	color: #666;
+	font: bold 36px/1.13 'PT Sans Narrow', sans-serif;
 }
 
 
-/* Elements */
+/*
+ * Finally, some general styling for visual presentation elements.
+ */
 
 .slide section p {
-	color:#666;
+	color: #666;
 	margin-top: 16px;
 	margin-bottom: 16px;
 	line-height: 1.3;
@@ -65,47 +77,34 @@ body {
 	margin-top: 0px;
 }
 
-.slide p.note {
-	color:#888;
-	}
 .slide a {
-	color:#0174A7;
-	text-decoration:none;
+	color: #0174A7;
+	text-decoration: none;
 }
-.slide a[target=_blank] {
-	margin-right:22px;
-	}
-.slide a[target=_blank]:after {
-	position:absolute;
-	margin-left:7px;
-	font-family:'Target Blank';
-	content:'\005E';
-	}
-.slide b,
-.slide strong {
-	font-weight:bold;
-	}
-.slide i,
-.slide em {
-	font-style:italic;
-	}
 
-/* Quote */
+/*
+ * Quotations
+ */
+
 .slide blockquote {
-	font-style:italic;
+	font-style: italic;
 }
 
-/* Lists */
+/*
+ * Alternating colours in a list gives at least some chance of the visual 
+ * not being thunderingly boring.
+ */
+
 .slide ol,
 .slide ul {
-    margin:0 0 45px;
-    counter-reset:list;
+    margin: 0 0 45px;
+    counter-reset: list;
 }
 .slide ul ul,
 .slide ol ul,
 .slide ol ol,
 .slide ul ol {
-    margin:0 0 0 38px;
+    margin: 0 0 0 38px;
 }
 .slide ul > li:nth-child(even) {
     color: #4e9a06;
@@ -114,20 +113,18 @@ body {
     color: #8f5902;
 }
 
-/* Code */
+/*
+ * Source code and fixed width
+ */
 
 .slide kbd,
 .slide code {
-	-webkit-border-radius:8px;
-	-moz-border-radius:8px;
-	border-radius:8px;
-	-webkit-tab-size:4;
-	-moz-tab-size:4;
-	-o-tab-size:4;
-	tab-size:4;
-
+	-webkit-tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
 	font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', monospace;
-	font-size: 22px;
+	font-size: 20px;
 }
 
 .slide pre {
@@ -136,15 +133,23 @@ body {
 }
 
 .slide pre code {
-	display:inline;
-	background:none;
-	white-space:pre;
+	display: inline;
+	background: none;
+	white-space: pre;
 	background-color: white;
 	padding-top: 0px;
 	padding-bottom: 1em;
 	padding-left: 0px;
 	font-size: 22px;
 }
+
+/*
+ * After I've given a live presentation, I tend to go back and add comment
+ * slides with some notes about what I might have been talking about during
+ * various sequences. This <section> class takes the slide to a different
+ * background colour to differentiate them visually. You can use the same
+ * technique to apply a different theme for different sections of a talk.
+ */
 
 .slide section.comment {
 	background-image: url("comment-stripe.png");
