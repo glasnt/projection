@@ -1,4 +1,14 @@
 /*
+ * Default slide theming, and machinery for full screen.
+ *
+ * Copyright © 2010-2011 Vadim Makeev
+ * Copyright © 2012-2013 Operational Dynamics Consulting, Pty Ltd
+ *
+ * Forked from the "ribbon" theme for the Shower presentation tool, used
+ * under the MIT Open Source licence.
+ */
+
+/*
  * Yes, we all know that including CSS files rather than munging them together
  * costs a round trip, but Projection as a whole has several asyncronous steps,
  * notably loading the slide fragments which then triggers their content to load
@@ -8,3 +18,127 @@
 @import url("full.css");
 @import url("list.css");
 @import url("single.css");
+
+/*
+ * <section> elements are sized to a width of 1024x768. So any work you do 
+ * on a "slide" as an author writing a presentation has that as a page size.
+ * That is then given 50 top and 80 padding on each side, leaving the canvas
+ * at 864x718.
+ */
+
+div.slide section {
+	padding-top: 50px;
+	padding-left: 80px;
+	padding-right: 80px;
+	padding-bottom: 0;
+	width: 864px;
+	height: 718px;
+	background: #ffffff;
+	color: #000000;
+	z-index: 1;
+}
+
+/*
+ * Using CSS class "graphic" causes us to center the (single) image on the
+ * page. If the image is too large, hold it within the metrics of the <section>
+ * canvas.
+ */
+
+.slide section.graphic img,
+.slide section.graphic svg,
+.slide section.graphic object,
+.slide section.graphic embed {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index: 0;
+	-webkit-transform: translateX(-50%) translateY(-50%);
+	-ms-transform: translateX(-50%) translateY(-50%);
+	-o-transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%);
+	max-width: 864px;
+	max-height: 718px;
+}
+
+
+/*
+ * "cover" is for when you have an image that you want to stretch to cover
+ * the entire slide. The "cover wide" variant stretches in the horizontal 
+ * direction
+ */
+
+.slide section.cover {
+	background: #000;
+	overflow: hidden;
+}
+
+.slide section.cover img,
+.slide section.cover svg,
+.slide section.cover video,
+.slide section.cover object {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index:  -1;
+	height: 100%;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	-o-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.slide section.cover.wide img,
+.slide section.cover.wide svg,
+.slide section.cover.wide video,
+.slide section.cover.wide object {
+	top: 50%;
+	left: 0;
+	width: 100%;
+	height: auto;
+	z-index:  -1;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+/*
+ * The "shout" class takes an h2, gives it a rather large font size, and
+ * centers it horizontally and vertically. We take a bit of trouble to
+ * ensure that wrapped text doesn't bark the edge of the screen. Note that
+ * this is not restricted to the standard slide canvas area.
+ */
+
+.slide section.shout h2 {
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	width: 90%;
+	text-align: center;
+	line-height: 1;
+	font-size: 150px;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+/*
+ * For any arbitrary element, center it horizontally and vertically. This has
+ * the same effect as the graphic slide class does, without the z-index drop.
+ */
+
+.slide section .middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
