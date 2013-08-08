@@ -1,9 +1,10 @@
 body.list {
     	background:#585A5E;
+	margin-left: 0px;
 }
 
 body.list div.deck {
-	padding: 20px;
+	padding: 0px;
 }
 
 /*
@@ -16,6 +17,7 @@ body.list div.slide {
 	position: relative;
 	float: left;
 	margin: 50px;
+	margin-right: 0px
 	padding: 0px;
 	border: 80px;
 	overflow: hidden;
@@ -24,16 +26,16 @@ body.list div.slide {
 }
 body.list div.slide:hover {
 	box-shadow:
-		0 0 0 21px #3c3d40,
-		0 0 50px #3c3d40;
+		0 0 0 15px #3c3d40,
+		0 0 20px #3c3d40;
 	border-radius: 3px;
 
 }
 body.list div.slide.active {
 	box-shadow:
 		0 0 0 1px #305f8d,
-		0 0 0 21px #3c7cbd,
-		0 0 50px #3c3d40;
+		0 0 0 15px #3c7cbd,
+		0 0 20px #3c3d40;
 	border-radius: 3px;
 }
 
@@ -68,6 +70,8 @@ body.list div.slide section {
 		width: 256px;
 		height: 192px;
 		margin: 30px;
+		margin-left: 40px;
+		margin-right: 10px;
 	}
 	body.list div.slide section {
 		-webkit-transform: scale(0.25);
@@ -79,11 +83,11 @@ body.list div.slide section {
 }
 
 @media all and (max-width: 1000px) {
-	.list div.slide {
+	body.list div.slide {
 		width: 204px;
 		height: 153px;
 	}
-	.list div.slide section {
+	body.list div.slide section {
 		-webkit-transform: scale(0.2);
 		-moz-transform: scale(0.2);
 		-ms-transform: scale(0.2);
