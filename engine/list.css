@@ -51,46 +51,46 @@ body.list div.slide {
 
 body.list div.slide section {
 	-webkit-transform-origin: 0 0;
-	-webkit-transform: scale(0.5);
 	-moz-transform-origin: 0 0;
-	-moz-transform: scale(0.5);
 	-ms-transform-origin: 0 0;
-	-ms-transform: scale(0.5);
 	-o-transform-origin: 0 0;
-	-o-transform: scale(0.5);
 	transform-origin: 0 0;
+
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	-ms-transform: scale(0.5);
+	-o-transform: scale(0.5);
 	transform: scale(0.5);
 }
 
-/*
-@media all and (max-width:1500px) {
-	.list div.slide {
-		width:256px;
-		height:192px;
+@media all and (max-width: 1500px) {
+	body.list div.slide {
+		width: 256px;
+		height: 192px;
+		margin: 30px;
 	}
-	.list div.slide section {
-		-webkit-transform:scale(0.25);
-		-moz-transform:scale(0.25);
-		-ms-transform:scale(0.25);
-		-o-transform:scale(0.25);
-		transform:scale(0.25);
+	body.list div.slide section {
+		-webkit-transform: scale(0.25);
+		-moz-transform: scale(0.25);
+		-ms-transform: scale(0.25);
+		-o-transform: scale(0.25);
+		transform: scale(0.25);
 	}
 }
 
-@media all and (max-width:1000px) {
+@media all and (max-width: 1000px) {
 	.list div.slide {
-		width:204px;
+		width: 204px;
 		height: 153px;
 	}
 	.list div.slide section {
-		-webkit-transform:scale(0.2);
-		-moz-transform:scale(0.2);
-		-ms-transform:scale(0.2);
-		-o-transform:scale(0.2);
-		transform:scale(0.2);
+		-webkit-transform: scale(0.2);
+		-moz-transform: scale(0.2);
+		-ms-transform: scale(0.2);
+		-o-transform: scale(0.2);
+		transform: scale(0.2);
 	}
 }
-*/
 
 /*
  * This is a hack to allow clicking on slide thumbnails when in list mode. The
