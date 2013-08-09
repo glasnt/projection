@@ -2,3 +2,4 @@ slides/ConflictConsensusCloud.html
 slides/VisualArts1.html
 slides/VisualArts2.html
 slides/InTheBeginning.html
+slides/TheEnd.html
