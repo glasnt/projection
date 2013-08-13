@@ -263,7 +263,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.90472174"
      inkscape:cx="400.06739"
-     inkscape:cy="297.87942"
+     inkscape:cy="405.54198"
      inkscape:document-units="px"
      inkscape:current-layer="layer1-3"
      showgrid="false"
@@ -306,33 +306,33 @@
        transform="translate(41.928059,-81.573409)">
       <path
          sodipodi:type="arc"
-         style="opacity:0.50000000000000000;fill:#4e9a06;fill-opacity:1;stroke:none"
+         style="opacity:0.36940299;fill:#8ae234;fill-opacity:1;stroke:none"
          id="path5185"
          sodipodi:cx="451.71558"
          sodipodi:cy="426.98264"
          sodipodi:rx="248.00298"
          sodipodi:ry="248.00298"
          d="m 699.71855,426.98264 a 248.00298,248.00298 0 1 1 -496.00595,0 248.00298,248.00298 0 1 1 496.00595,0 z"
-         transform="matrix(0.81914305,0,0,0.81914305,53.772642,424.73473)" />
+         transform="matrix(0.72237882,0,0,0.72237882,139.16536,471.21292)" />
       <path
          sodipodi:type="arc"
-         style="opacity:0.28301887999999997;fill:#3465a4;fill-opacity:1;stroke:none"
+         style="opacity:0.28301888;fill:#e9b96e;fill-opacity:1;stroke:none"
          id="path5185-8"
          sodipodi:cx="451.71558"
          sodipodi:cy="426.98264"
          sodipodi:rx="250.59325"
          sodipodi:ry="250.59325"
          d="m 702.30882,426.98264 a 250.59325,250.59325 0 1 1 -501.18649,0 250.59325,250.59325 0 1 1 501.18649,0 z"
-         transform="matrix(0.8135338,0,0,0.8135338,-65.704963,492.22457)" />
+         transform="matrix(0.71743218,0,0,0.71743218,-20.243765,565.49914)" />
       <text
          sodipodi:linespacing="125%"
          id="text3290"
-         y="642.35712"
-         x="495.54327"
-         style="font-size:30.29765511px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         y="657.93225"
+         x="505.89682"
+         style="font-size:26.71863556px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
          xml:space="preserve"><tspan
-           y="642.35712"
-           x="495.54327"
+           y="657.93225"
+           x="505.89682"
            id="tspan3292"
            sodipodi:role="line" /></text>
     </g>

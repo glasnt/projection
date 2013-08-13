@@ -1,3 +1,35 @@
+.slide section.part1 {
+	background: #333366;
+	color: white;
+}
+
+.slide section.part1 h1 {
+	color: white;
+	text-align: center;
+}
+
+.slide section.part1 h2 {
+	color: white;
+	text-align: center;
+}
+
+.slide section.part1 h3 {
+	color: white;
+	font-size: 72px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+.slide section.part1 p {
+	color: #dddddd;
+	font-size: 32px;
+	font-style: italic;
+	text-align: center;
+}
+
+
+
 .slide section .detail {
 	position: absolute;
 	right: 50px;
