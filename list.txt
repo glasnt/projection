@@ -1,5 +1,5 @@
 slides/TitleSlide.html
 slides/InTheBeginning.html
-slides/VisualArts1.html
+slides/Overlap.html
 slides/VisualArts2.html
 slides/TheEnd.html
