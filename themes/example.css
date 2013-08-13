@@ -1,0 +1,14 @@
+.slide section .detail {
+	position: absolute;
+	right: 50px;
+	bottom: 10px;
+	background: black;
+	color: white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 35px;
+	font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', monospace;
+	font-size: 16px;
+}
