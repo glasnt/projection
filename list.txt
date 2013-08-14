@@ -1,6 +1,6 @@
 slides/TitleSlide.html
 slides/InTheBeginning.html
-slides/Part6.html
+slides/ChangingMasters.html
 slides/Versus1.html
 slides/Versus2.html
 slides/Versus3.html
