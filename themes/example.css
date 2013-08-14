@@ -1,19 +1,19 @@
-.slide section.part1 {
+.slide section.part6 {
 	background: #333366;
 	color: white;
 }
 
-.slide section.part1 h1 {
+.slide section.part6 h1 {
 	color: white;
 	text-align: center;
 }
 
-.slide section.part1 h2 {
+.slide section.part6 h2 {
 	color: white;
 	text-align: center;
 }
 
-.slide section.part1 h3 {
+.slide section.part6 h3 {
 	color: white;
 	font-size: 72px;
 	text-align: center;
@@ -21,7 +21,7 @@
 	margin: 0;
 }
 
-.slide section.part1 p {
+.slide section.part6 p {
 	color: #dddddd;
 	font-size: 32px;
 	font-style: italic;
