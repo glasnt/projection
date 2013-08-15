@@ -33,9 +33,17 @@ div.slide section {
 	padding-bottom: 0;
 	width: 864px;
 	height: 718px;
+	z-index: 1;
+}
+
+
+/*
+ * Need at least a basic default; less restrictive to make it easier for you to theme.
+ */
+
+section {
 	background: #ffffff;
 	color: #000000;
-	z-index: 1;
 }
 
 /*
