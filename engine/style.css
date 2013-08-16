@@ -52,10 +52,10 @@ section {
  * canvas.
  */
 
-.slide section.graphic img,
-.slide section.graphic svg,
-.slide section.graphic object,
-.slide section.graphic embed {
+.slide section img.graphic,
+.slide section svg.graphic,
+.slide section object.graphic,
+.slide section embed.graphic {
 	position: absolute;
 	left: 50%;
 	top: 50%;

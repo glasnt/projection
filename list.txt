@@ -1,10 +1,10 @@
 slides/TitleSlide.html
 slides/InTheBeginning.html
+slides/EnterThePenguin.html
 slides/ChangingMasters.html
 slides/Versus1.html
 slides/Versus2.html
 slides/Versus3.html
 slides/Versus4.html
 slides/Overlap.html
-slides/VisualArts2.html
 slides/TheEnd.html

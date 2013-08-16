@@ -1,19 +1,23 @@
-.slide section.part6 {
+/*
+ * Part 6 chapter theme
+ */
+
+section.part6 {
 	background: #333366;
 	color: white;
 }
 
-.slide section.part6 h1 {
+section.part6 h1 {
 	color: white;
 	text-align: center;
 }
 
-.slide section.part6 h2 {
+section.part6 h2 {
 	color: white;
 	text-align: center;
 }
 
-.slide section.part6 h3 {
+section.part6 h3 {
 	color: white;
 	font-size: 72px;
 	text-align: center;
@@ -21,14 +25,26 @@
 	margin: 0;
 }
 
-.slide section.part6 p {
+section.part6 p {
 	color: #dddddd;
 	font-size: 32px;
 	font-style: italic;
 	text-align: center;
 }
 
+/*
+ * Black chapter theme
+ */
 
+section.black {
+	background: black;
+	color: white;
+}
+
+/*
+ * Bubble for explanatory details about specific elements and classes used to
+ * create a given slide
+ */
 
 .slide section .detail {
 	position: absolute;
@@ -43,4 +59,5 @@
 	margin-bottom: 35px;
 	font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', monospace;
 	font-size: 16px;
+	width: 400px;
 }
