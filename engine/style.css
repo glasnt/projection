@@ -80,10 +80,10 @@ section {
 	overflow: hidden;
 }
 
-.slide section.cover img,
-.slide section.cover svg,
-.slide section.cover video,
-.slide section.cover object {
+.slide section img.cover,
+.slide section svg.cover,
+.slide section video.cover,
+.slide section object.cover {
 	position: absolute;
 	top: 0;
 	left: 50%;
@@ -96,10 +96,11 @@ section {
 	transform: translateX(-50%);
 }
 
-.slide section.cover.wide img,
-.slide section.cover.wide svg,
-.slide section.cover.wide video,
-.slide section.cover.wide object {
+.slide section img.cover.wide,
+.slide section svg.cover.wide,
+.slide section video.cover.wide,
+.slide section object.cover.wide {
+	position: absolute;
 	top: 50%;
 	left: 0;
 	width: 100%;
