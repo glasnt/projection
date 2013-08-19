@@ -119,19 +119,30 @@ section {
  * this is not restricted to the standard slide canvas area.
  */
 
-.slide section.shout h2 {
+.slide section .shout {
 	position: absolute;
 	top: 50%;
 	left: 5%;
 	width: 90%;
 	text-align: center;
 	line-height: 1;
-	font-size: 150px;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
 	transform: translateY(-50%);
+}
+.slide section h1.shout {
+	font-size: 150px;
+}
+.slide section h2.shout {
+	font-size: 100px;
+}
+.slide section .shout h1 {
+	font-size: 150px;
+}
+.slide section .shout h2 {
+	font-size: 100px;
 }
 
 /*
