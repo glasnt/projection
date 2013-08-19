@@ -1,5 +1,6 @@
 slides/TitleSlide.html
 slides/InTheBeginning.html
+slides/UseVectorGraphics.html
 slides/EnterThePenguin.html
 slides/ChangingMasters.html
 slides/Versus1.html
