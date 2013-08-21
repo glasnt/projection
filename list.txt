@@ -1,6 +1,8 @@
 slides/TitleSlide.html
 slides/InTheBeginning.html
-slides/WhoAreYou.html
+slides/AboutLists.html
+slides/WhoAreYou1.html
+slides/WhoAreYou2.html
 slides/UseVectorGraphics.html
 slides/EnterThePenguin.html
 slides/ChangingMasters.html
