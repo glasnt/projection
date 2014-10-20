@@ -152,18 +152,30 @@
 		return page + " - " + fragment;
 	}
 
-	function displayCurrentSlide() {
-		var slide, fragment, element, url;
-
-		slide = slideList[currentPosition];
-	
-		fragment = fileToFragment(slide);
-
+	function setTitle(fragment) {
+		if (typeof fragment == "undefined") {
+			fragment = getFragment()
+		}
 		if (mode == "list") {
 			document.title = "All Slides";
 		} else {
 			document.title = fragmentToTitle(fragment);
 		}
+	}
+
+	function getFragment() {
+		var slide, fragment; 
+		slide = slideList[currentPosition];
+
+		fragment = fileToFragment(slide);
+		return fragment
+	}
+
+	function displayCurrentSlide() {
+		var slide, fragment, element, url;
+
+		fragment = getFragment()
+		setTitle(fragment)
 
 		url = window.location.origin + window.location.pathname + window.location.search + "#" + fragment;
   		history.replaceState(null, null, url);
@@ -186,6 +198,7 @@
 		$("body").addClass("full");
 
 		mode = "full";
+		setTitle()
 		doScaleBody();
 
 		url = window.location.origin + window.location.pathname + window.location.hash;
